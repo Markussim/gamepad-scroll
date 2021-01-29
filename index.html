@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Upload image</title>
+    <link rel="stylesheet" href="main.css" />
+    <script>
+      window.addEventListener("gamepadconnected", (event) => {
+        const update = () => {
+          for (const gamepad of navigator.getGamepads()) {
+            if (!gamepad) continue;
+            console.log(gamepad.axes[4]);
+            window.scrollBy(gamepad.axes[3] * 100, gamepad.axes[4] * 100);
+          }
+          requestAnimationFrame(update);
+        };
+        update();
+      });
+    </script>
+  </head>
+  <body>
+    <img src="Large-Format-HD-Wallpaper.jpg" height="10000px">
+  </body>
+</html>
