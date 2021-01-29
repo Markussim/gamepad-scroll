@@ -9,8 +9,21 @@
         const update = () => {
           for (const gamepad of navigator.getGamepads()) {
             if (!gamepad) continue;
-            console.log(gamepad.axes[4]);
+            //console.log(gamepad.axes[4]);
             window.scrollBy(gamepad.axes[3] * 100, gamepad.axes[4] * 100);
+
+            if (
+              window.innerHeight + window.scrollY >= document.body.offsetHeight ||
+              window.scrollY == 0 
+              //window.innerWidth + window.scrollX >= document.body.offsetLeft
+              //|| window.scrollX == 0
+            ) {
+              document.getElementById("colorThing").style.backgroundColor =
+                "red";
+            } else {
+              document.getElementById("colorThing").style.backgroundColor =
+                "white";
+            }
           }
           requestAnimationFrame(update);
         };
@@ -18,7 +31,11 @@
       });
     </script>
   </head>
-  <body>
-    <img src="Large-Format-HD-Wallpaper.jpg" height="10000px">
+  <body id="colorThing">
+    <img
+      src="Large-Format-HD-Wallpaper.jpg"
+      height="10000px"
+      style="margin: 50px"
+    />
   </body>
 </html>
